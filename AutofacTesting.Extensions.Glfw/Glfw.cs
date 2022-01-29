@@ -5,6 +5,21 @@ namespace AutofacTesting.Extensions.Glfw;
 
 public static class Glfw
 {
+    public static void SetWindowShouldClose(GlfwWindow glfwWindow, int value)
+    {
+        GlfwDllImport.glfwSetWindowShouldClose(glfwWindow.WindowHandle, value);
+    }
+
+    public static bool IsKeyPressed(GlfwWindow glfwWindow, int key)
+    {
+        return GetKey(glfwWindow, key) == GlfwConstants.GLFW_PRESS;
+    }
+
+    public static int GetKey(GlfwWindow glfwWindow, int key)
+    {
+        return GlfwDllImport.glfwGetKey(glfwWindow.WindowHandle, key);
+    }
+
     public static void SetErrorCallback(GlfwCallbacks.GLFWerrorfun callback)
     {
         GlfwDllImport.glfwSetErrorCallback(callback);

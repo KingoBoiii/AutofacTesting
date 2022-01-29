@@ -58,6 +58,11 @@ public class GLWindow : WindowBase
 
     public override void Update()
     {
+        if(Glfw.IsKeyPressed(_glfwWindow, GlfwConstants.GLFW_KEY_ESCAPE))
+        {
+            Glfw.SetWindowShouldClose(_glfwWindow, GlfwConstants.GLFW_TRUE);
+        }
+
         Glfw.SwapBuffers(_glfwWindow);
         Glfw.PollEvents();
     }
